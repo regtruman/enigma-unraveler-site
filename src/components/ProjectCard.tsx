@@ -1,6 +1,9 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectCardProps {
+  slug: string;
   title: string;
   org: string;
   date: string;
@@ -11,7 +14,7 @@ interface ProjectCardProps {
   index: number;
 }
 
-export function ProjectCard({ title, org, date, description, details, tags, images, index }: ProjectCardProps) {
+export function ProjectCard({ slug, title, org, date, description, details, tags, images, index }: ProjectCardProps) {
   const { ref, isVisible } = useScrollReveal(0.1);
   const isEven = index % 2 === 0;
 
@@ -22,7 +25,7 @@ export function ProjectCard({ title, org, date, description, details, tags, imag
           <div className={`grid ${images.length > 1 ? "grid-cols-2" : ""} gap-3 ${!isEven ? "lg:col-start-2" : ""}`}>
             {images.map((img, i) => (
               <div key={i} className={`rounded-lg overflow-hidden shadow-md ring-1 ring-border ${images.length === 3 && i === 0 ? "col-span-2" : ""}`}>
-                <img src={img} alt={`${title} image ${i + 1}`} className="w-full h-48 object-cover" loading="lazy" />
+                <img src={img} alt={`${title} image ${i + 1}`} className="w-full h-auto object-contain" loading="lazy" />
               </div>
             ))}
           </div>
@@ -40,7 +43,7 @@ export function ProjectCard({ title, org, date, description, details, tags, imag
           <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
 
           <ul className="space-y-1.5">
-            {details.map((d, i) => (
+            {details.slice(0, 3).map((d, i) => (
               <li key={i} className="text-sm text-muted-foreground leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent/40">
                 {d}
               </li>
@@ -54,6 +57,14 @@ export function ProjectCard({ title, org, date, description, details, tags, imag
               </span>
             ))}
           </div>
+
+          <Link
+            to={`/project/${slug}`}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline pt-1 group"
+          >
+            View Full Details
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </div>
