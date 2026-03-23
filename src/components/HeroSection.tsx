@@ -1,4 +1,4 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, ChevronDown } from "lucide-react";
 import ryanPhoto from "@/assets/ryan-photo-alt.jpg";
 
 export function HeroSection() {
@@ -55,6 +55,13 @@ export function HeroSection() {
         </div>
       </div>
 
+      <button
+        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-reveal delay-5 text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="Scroll to About"
+      >
+        <ChevronDown className="w-6 h-6 animate-bounce" />
+      </button>
     </section>
   );
 }
