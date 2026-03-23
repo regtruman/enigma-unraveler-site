@@ -55,9 +55,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-reveal delay-5 text-muted-foreground hover:text-foreground transition-colors">
-        <ChevronDown className="w-6 h-6 animate-bounce" />
-      </a>
     </section>
   );
 }
