@@ -1,4 +1,4 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, ChevronDown } from "lucide-react";
 import ryanPhoto from "@/assets/ryan-photo-alt.jpg";
 
 export function HeroSection() {
